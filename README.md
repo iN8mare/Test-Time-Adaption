@@ -5,7 +5,7 @@ The two repositories have been merged only for MetaIQA and for KONIQ dataset ins
 Detailed description and link of datasets is given in the [TTA-IQA](https://github.com/subhadeeproy2000/TTA-IQA) repo. 
 Each dataset needs to be prepared according to the ```folders.py``` inside TTA folder (```TTA/TTA-IQA/MetaIQA/folders.py```)
 ### Pre-trained models
-Both the IQA and Depth-Anything pre-trained models are available in their respective repositories.
+Both the IQA and Depth-Anything pre-trained models are available in their respective repositories. <b>Note</b> ```torchhub``` folder form Depth-Anything repo.
 ### Code files
 Every TTA model's folder has a ```ALL_EXPT.py``` file that lists the experiments and arguments the author pases while testing.
 ```MetaIQA``` folder has been updated by integrating the above mentioned repositories. The following briefly explains each code file :
