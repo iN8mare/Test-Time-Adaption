@@ -388,7 +388,7 @@ class METAIQASolver(object):
             target = torch.ones(inputs.shape[0]).cuda()
 
             for pass_num in range(2):  # for first and second pass of SAM optimizer
-                if config.optimizer == 'adam' and i == 1:
+                if config.optimizer == 'adam' and pass_num == 1:
                     continue   # only 1 pass in case of adam / sgd
 
                 total_loss = 0
@@ -502,7 +502,10 @@ class METAIQASolver(object):
                 if pass_num == 0:
                     # loss = loss_function(output, model(input))  # use this loss for any training statistics
                     total_loss.backward()
-                    self.optimizer_ssh.first_step(zero_grad=True)
+                    if config.optimizer == 'sam':
+                        self.optimizer_ssh.first_step(zero_grad=True)
+                    else:
+                        self.optimizer_ssh.step()
                     loss_hist.append(total_loss.detach().cpu())  # appending here since only this loss is to be used
 
                 if pass_num == 1:
